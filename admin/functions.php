@@ -1,6 +1,12 @@
 <?php
 
+function comfirm($result){
+        global $conection;
 
+    if(!$result){
+        die("QUERY FAILD ." . mysqli_error($conection));
+    }
+}
 
 function insert_categories(){
     global $conection;
@@ -30,24 +36,25 @@ function insert_categories(){
     
     
 function findAllCategories(){
-     global $conection;
     
-    $query = "SELECT * FROM categories";
-                                    $select_catagories = mysqli_query($conection,$query);
+            global $conection;
+
+            $query = "SELECT * FROM categories";
+            $select_catagories = mysqli_query($conection,$query);
 
 
-                                    while($row=mysqli_fetch_assoc($select_catagories)){
-                                     $cat_id=$row['cat_id'];
-                                     $cat_title=$row['cat_title'];
+            while($row=mysqli_fetch_assoc($select_catagories)){
+             $cat_id=$row['cat_id'];
+             $cat_title=$row['cat_title'];
 
-                                    echo "<tr>";
-                                    echo "<td>{$cat_id}</td>";
-                                    echo "<td>{$cat_title}</td>";
-                                    echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
-                                    echo "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
-                                    echo "</tr>";
+            echo "<tr>";
+            echo "<td>{$cat_id}</td>";
+            echo "<td>{$cat_title}</td>";
+            echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
+            echo "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
+            echo "</tr>";
 
-                            }
+    }
 
 
 
