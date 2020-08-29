@@ -9,6 +9,8 @@
                                     <th>Tags</th>
                                     <th>Comments</th>
                                     <th>Data</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             
@@ -84,6 +86,7 @@
         
         $query = "DELETE FROM postes WHERE post_id = {$the_post_id} ";
         $delete_query = mysqli_query($conection,$query);
+        header("Location: posts.php");
     }
 
 
