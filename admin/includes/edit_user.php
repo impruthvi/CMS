@@ -102,7 +102,7 @@
                      <option value="<?php echo $user_role; ?>"><?php echo $user_role ?></option>
                     <?php
     
-                    if($user_role == 'Admin'){
+                    if($user_role == 'admin'){
                         
                      echo '<option value="Subscriber">Subscriber</option>';
                     }else{
