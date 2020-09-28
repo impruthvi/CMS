@@ -60,6 +60,8 @@
                         $update_post = mysqli_query($conection,$query);
                         comfirm($update_post);
                 
+                        echo "<p class='bg-success'>Post Updated.<a href='../post.php?p_id={$the_post_id}'>View Post</a> or <a href='posts.php'>Edite more posts</p>  ";
+                
                 
             }
 
@@ -108,12 +110,34 @@
                     <label for="title">Post Auther</label>
                     <input value="<?php echo $post_author ?>" type="text" class="form-control" name="author">
                 </div>
-
-
+                
                 <div class="form-group">
-                    <label for="post_status">Post Status</label>
-                    <input value="<?php echo $post_status ?>"  type="text" class="form-control" name="post_status">
+                   <select name="post_status" id="">
+                       
+                       
+                       <option value="<?php echo $post_status ?>"><?php echo $post_status ?></option>
+                       
+                       <?php
+                        
+                        if($post_status == "published"){
+                            
+                            echo "<option value='draft'>Draft</option>";
+                        }else{
+                             echo "<option value='published'>Published</option>";
+                        }
+                       
+                       
+                       ?>
+                   </select>
                 </div>
+                
+                
+                
+
+
+                
+                
+                
 
                 <div class="form-group">
                     <img width="150" src="../images/<?php echo $post_image?>" alt="images">
@@ -127,8 +151,17 @@
 
                 <div class="form-group">
                     <label for="post_content">Post Content</label>
-                   <textarea   name="post_content" id="" cols="30" rows="10" class="form-control"><?php echo $post_content ?></textarea>
+                   <textarea   name="post_content" id="body" cols="30" rows="10" class="form-control"><?php echo $post_content ?></textarea>
                 </div>
+                
+                   <script>
+                        ClassicEditor
+                            .create( document.querySelector( '#body' ) )
+                            .catch( error => {
+                                console.error( error );
+                            } );
+                    </script>
+    
 
 
                 <div class="form-group">

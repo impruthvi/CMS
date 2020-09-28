@@ -34,6 +34,11 @@
             
             comfirm($create_post_query);
             
+            echo "User Created : " . "" . "<a href='users.php'>View Users</a>";
+            
+            
+            
+            
             
             
         }

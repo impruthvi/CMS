@@ -53,7 +53,16 @@
             
 //            move_uploaded_file($post_image_temp,"../images/$post_image" );
             
-            
+               $query = "SELECT randSalt FROM users";
+                $select_randSalt_query = mysqli_query($conection,$query);
+
+                if(!$select_randSalt_query){
+                    die("Query Failed" . mysqli_error($conection));
+                }
+
+                $row=mysqli_fetch_array($select_randSalt_query);
+                $salt = $row['randSalt'];
+                $hashed_password=crypt($user_password,$salt);
             
             
             $query = "UPDATE users SET ";
@@ -62,7 +71,7 @@
 //                        $query .="post_date = now(), ";
                         $query .="username = '{$username}', ";
                         $query .="user_email = '{$user_email}', ";
-                        $query .="user_password = '{$user_password}', ";
+                        $query .="user_password = '{$hashed_password}', ";
                         $query .="user_role= '{$user_role}' ";
 //                        $query .="post_image  = '{$post_image}' ";
                         $query .= "WHERE user_id = {$the_user_id} ";
@@ -153,7 +162,7 @@
     
     
     <div class="form-group">
-        <input type="submit" class="btn btn-primary" name="edit_user" value="Edit User">
+        <input type="submit" class="btn btn-primary" name="edit_user" value="Update User">
     </div>
     
     

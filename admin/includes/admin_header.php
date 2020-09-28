@@ -54,6 +54,8 @@
 
 <script src="js/jquery.js"></script>
 
+<script src="https://cdn.ckeditor.com/ckeditor5/22.0.0/classic/ckeditor.js"></script>
+
 
  
 

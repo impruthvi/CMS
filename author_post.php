@@ -19,10 +19,11 @@
                 
                         if(isset($_GET['p_id'])){
                             $the_post_id = $_GET['p_id'];
+                            $the_post_author = $_GET['author'];
                             }
                         
             
-                        $query = "SELECT * FROM postes WHERE post_id=$the_post_id  ";
+                        $query = "SELECT * FROM postes WHERE post_author='{$the_post_author}' ";
                         $select_all_posts_query = mysqli_query($conection,$query);
                         
                         while($row=mysqli_fetch_assoc($select_all_posts_query)){
@@ -47,7 +48,7 @@
                     <a href="#"><?php echo $post_title?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php"><?php echo $post_author?></a>
+                   All post by <?php echo $post_author?>    
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span><?php echo $post_date?></p>
                 <hr>
@@ -119,9 +120,6 @@
                                 
                                 
                                 
-                                
-                                
-                                
                             }
                 
                 
@@ -129,26 +127,7 @@
                 
                     ?>
 
-                <!-- Comments Form -->
-                <div class="well">
-                    <h4>Leave a Comment:</h4>
-                    <form role="form" method="post">
-                       <div class="form-group">
-                          <label for="Authoe">Author</label>
-                           <input name="comment_author" type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                           <label for="Authoe">Email</label>
-                            <input name="comment_email" type="email" class="form-control">
-                        </div>
-                        <div class="form-group">
-                           <label for="comment">Your Comments</label>
-                            <textarea name="comment_content" class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-
+               
                 <hr>
 
                 <!-- Posted Comments -->
@@ -173,23 +152,8 @@
                 ?>
                 
                 
-                           <!-- Comment -->
-                <div class="media">
-                     
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading"><?php echo $comment_author;   ?>
-                            <small><?php echo $comment_date;   ?></small>
-                        </h4>
-                        
-                        <?php echo $comment_content;   ?>
- 
-                    </div>
-                </div>
-     
-                
+
+              
   
 
            <?php }?>

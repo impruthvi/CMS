@@ -31,7 +31,8 @@
             $create_post_query = mysqli_query($conection,$query);
             
             comfirm($create_post_query);
-            
+            $the_post_id = mysqli_insert_id($conection);
+             echo "<p class='bg-success'>Post Updated.<a href='../post.php?p_id={$the_post_id}'>View Post</a> or <a href='posts.php'>Edite more posts</p>  ";
             
             
         }
@@ -76,7 +77,13 @@
     
     <div class="form-group">
         <label for="post_status">Post Status</label>
-        <input type="text" class="form-control" name="post_status">
+              <div class="form-group">
+                 <select name="post_status" id="">
+                     <option value="draft">Post Status</option>
+                     <option value="published">Published</option>
+                     <option value="draft">Draft</option>
+                 </select>
+              </div>
     </div>
     
     <div class="form-group">
@@ -91,8 +98,16 @@
     
     <div class="form-group">
         <label for="post_content">Post Content</label>
-       <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
+       <textarea name="post_content" id="body" cols="30" rows="10" class="form-control"></textarea>
     </div>
+    
+        <script>
+        ClassicEditor
+            .create( document.querySelector( '#body' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
     
     
     <div class="form-group">
