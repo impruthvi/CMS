@@ -19,8 +19,13 @@
                 
                         if(isset($_GET['p_id'])){
                             $the_post_id = $_GET['p_id'];
+                            
+                            $view_query = "UPDATE postes SET post_views_count = post_views_count + 1 WHERE post_id = $the_post_id";
+                            $send_query = mysqli_query($conection,$view_query);
+                            
+                            if(!$send_query){
+                                die("Query faild");
                             }
-                        
             
                         $query = "SELECT * FROM postes WHERE post_id=$the_post_id  ";
                         $select_all_posts_query = mysqli_query($conection,$query);
@@ -31,6 +36,7 @@
                              $post_date=$row['post_date'];
                              $post_image=$row['post_image'];
                              $post_content=$row['post_content'];
+                             
                        
                             
                             
@@ -61,7 +67,11 @@
                             
                             
                             
-                    <?php } ?>
+                    <?php } 
+                        }else{
+                            header("Location: index.php");
+                        }
+                ?>
                     
                     
                      <!-- Blog Comments -->
@@ -157,7 +167,7 @@
          <?php 
 
 
-            $query = "SELECT * FROM comments WHERE comment_post_id = {$the_post_id} ";
+            $query = "SELECT * FROM comments WHERE comment_post_id ={$the_post_id} ";
             $query .= "AND comment_status = 'approve' ";
             $query .= "ORDER BY comment_id DESC ";
             $select_comment_query = mysqli_query($conection, $query);
