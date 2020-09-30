@@ -4,6 +4,8 @@
    
    
     <div id="wrapper">
+       
+    
         
 
         <!-- Navigation -->
@@ -26,6 +28,7 @@
                             
                             <small><?php echo $_SESSION['username']?></small>
                         </h1>
+                       
                      
                     </div>
                 </div>
