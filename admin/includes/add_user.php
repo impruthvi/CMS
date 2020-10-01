@@ -21,6 +21,7 @@
             
            
             $user_role=$_POST['user_role'];
+            $user_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 10  ));
             
 //            $post_date=date('d-m-y');
             
