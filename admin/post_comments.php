@@ -105,8 +105,8 @@
 
                                 echo "<td>$comment_date </td>";
 
-                                echo "<td> <a href='comments.php?approve=$comment_id'>Approve</a></td>";
-                                echo "<td> <a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
+                                echo "<td> <a href='comments.php?approve=$comment_id&id=".$_GET['id']."'>Approve</a></td>";
+                                echo "<td> <a href='comments.php?unapprove=$comment_id&id=".$_GET['id']."'>Unapprove</a></td>";
                                 echo "<td> <a href='post_comments.php?delete=$comment_id&id=".$_GET['id']."'>Delete</a></td>";
 
 
@@ -132,7 +132,7 @@
                         if (!$approve_query) {
                             die("faild" . mysqli_error($conection));
                         }
-                        header("Location:comments.php");
+                        header("Location:post_comments.php?id=".$_GET['id']."");
                     }
 
 
@@ -144,7 +144,7 @@
                         if (!$unapprove_query) {
                             die("faild" . mysqli_error($conection));
                         }
-                        header("Location:comments.php");
+                        header("Location:post_comments.php?id=".$_GET['id']."");
                     }
 
 
