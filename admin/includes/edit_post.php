@@ -107,6 +107,7 @@ if (isset($_POST['update_post'])) {
     <div class="form-group">
         <label for="user">Post Auther</label>
         <select name="post_user" id="">
+           <?php echo "<option value=$post_user>{$post_user}</option>";?>
             <?php
             $users_query = "SELECT * FROM users  ";
             $select_catagories = mysqli_query($conection, $users_query);
