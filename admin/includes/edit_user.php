@@ -107,13 +107,6 @@ if (isset($_GET['edit_user'])) {
 
             ?>
 
-
-
-
-
-
-
-
         </select>
     </div>
 

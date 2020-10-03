@@ -91,7 +91,7 @@
              <tr>
                  <th><input id="selectAllBoxes" type="checkbox"></th>
                  <th>Id</th>
-                 <th>Auther</th>
+                 <th>Users</th>
                  <th>Post Title</th>
                  <th>Cetegory</th>
                  <th>Status</th>
@@ -138,14 +138,14 @@
 
 
                     echo "<td> $post_id</td>";
-                    if (isset($post_author) || !empty($post_author)) {
+                    if (!empty($post_author)) {
 
                         echo "<td>$post_author </td>";
-                    } elseif (isset($post_user) || !empty($post_user)) {
+                    } elseif (!empty($post_user)) {
                         echo "<td>$post_user </td>";
                     }
                     echo "<td>$post_title </td>";
-                    
+
 
 
                     $query = "SELECT * FROM categories WHERE cat_id = $post_category_id ";
