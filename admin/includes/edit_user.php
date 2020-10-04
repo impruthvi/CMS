@@ -96,10 +96,10 @@ if (isset($_GET['edit_user'])) {
 
             if ($user_role == 'admin') {
 
-                echo '<option value="Subscriber">Subscriber</option>';
+                echo '<option value="subscriber">Subscriber</option>';
             } else {
 
-                echo '<option value="Admin">Admin</option>';
+                echo '<option value="admin">Admin</option>';
             }
 
 
